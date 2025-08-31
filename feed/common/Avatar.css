@@ -1,0 +1,13 @@
+.avatar-button {
+  transition: all 0.2s ease;
+}
+
+.avatar-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(29, 78, 216, 0.3);
+}
+
+.avatar-button:focus {
+  outline: 2px solid #1d4ed8;
+  outline-offset: 2px;
+}

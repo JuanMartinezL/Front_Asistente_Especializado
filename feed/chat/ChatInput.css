@@ -1,0 +1,67 @@
+.chat-input-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: white;
+  border-top: 1px solid #e5e7eb;
+  padding: 1rem;
+}
+
+.chat-input-wrapper {
+  position: relative;
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  border: 2px solid;
+  transition: all 0.2s ease;
+}
+
+.drag-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: #dbeafe;
+  border-radius: 1rem;
+  border: 2px dashed #3b82f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.chat-button {
+  padding: 0.5rem;
+  color: #6b7280;
+  transition: all 0.2s ease;
+  border-radius: 0.5rem;
+}
+
+.chat-button:hover {
+  color: #3b82f6;
+  background-color: #dbeafe;
+  transform: scale(1.1);
+}
+
+.chat-textarea {
+  width: 100%;
+  min-height: 44px;
+  max-height: 120px;
+  padding: 0.75rem 1rem;
+  color: #1f2937;
+  background-color: transparent;
+  border: none;
+  resize: none;
+  outline: none;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.chat-textarea::placeholder {
+  color: #9ca3af;
+}
+
+.send-button {
+  padding: 0.75rem;
+  border-radius: 0.75rem;
+  transition: all 0.2s ease;
+}
