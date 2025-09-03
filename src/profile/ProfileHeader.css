@@ -1,0 +1,23 @@
+.profile-header-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.profile-header-button:hover {
+  background-color: #f9fafb;
+}
+
+.profile-chevron {
+  width: 1rem;
+  height: 1rem;
+  color: #6b7280;
+  transition: transform 0.2s ease;
+}
+
+.profile-chevron-open {
+  transform: rotate(180deg);
+}

@@ -1,0 +1,73 @@
+.profile-menu {
+  position: absolute;
+  right: 0;
+  margin-top: 0.5rem;
+  width: 18rem;
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  border: 1px solid #e5e7eb;
+  padding: 1rem;
+  z-index: 50;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.profile-info {
+  flex: 1;
+}
+
+.profile-name {
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 0.25rem;
+}
+
+.profile-role {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin-bottom: 0.125rem;
+}
+
+.profile-email {
+  font-size: 0.75rem;
+  color: #9ca3af;
+}
+
+.profile-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.profile-action-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  text-align: left;
+  color: #374151;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+  font-size: 0.875rem;
+}
+
+.profile-action-button:hover {
+  background-color: #f9fafb;
+}
+
+.profile-action-button.logout {
+  color: #dc2626;
+}
+
+.profile-action-button.logout:hover {
+  background-color: #fef2f2;
+}
