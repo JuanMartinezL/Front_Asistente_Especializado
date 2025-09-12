@@ -2,6 +2,23 @@
   text-align: center;
   margin-bottom: 3rem;
   animation: fadeIn 0.8s ease-out forwards;
+  transition: all 0.3s ease;
+}
+
+.welcome-container.dark {
+  color: white;
+}
+
+.welcome-container.dark .welcome-title {
+  color: #e5e7eb;
+}
+
+.welcome-container.dark .welcome-description {
+  color: #9ca3af;
+}
+
+.welcome-container.dark .category-instruction {
+  color: #9ca3af;
 }
 
 .welcome-icons {
@@ -53,27 +70,26 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 0.75rem;
-  max-width: 36rem;
+  max-width: 60rem;
   margin: 0 auto;
 }
 
 @media (min-width: 768px) {
   .category-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(5, 1fr);
   }
 }
 
 .category-button {
   padding: 1rem;
   border-radius: 1rem;
-  text-align: left;
+  text-align: center;
   transition: all 0.2s ease;
   border: 2px solid;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
-  text-align: center;
 }
 
 .category-button:hover {
@@ -97,6 +113,17 @@
 .category-button-inactive:hover {
   border-color: #3b82f6;
   background-color: #eff6ff;
+}
+
+.welcome-container.dark .category-button-inactive {
+  background-color: #374151;
+  color: #e5e7eb;
+  border-color: #4b5563;
+}
+
+.welcome-container.dark .category-button-inactive:hover {
+  background-color: #4b5563;
+  border-color: #6b7280;
 }
 
 .category-icon {

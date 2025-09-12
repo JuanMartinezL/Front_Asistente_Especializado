@@ -2,7 +2,12 @@ import React from 'react';
 import { Stethoscope, Heart, Activity } from 'lucide-react';
 import './WelcomeMessage.css';
 
-const WelcomeMessage = ({ selectedCategory, onCategorySelect, darkMode }) => {
+interface WelcomeMessageProps {
+  selectedCategory: string;
+  onCategorySelect: (category: string) => void;
+}
+
+const WelcomeMessage: React.FC<WelcomeMessageProps> = ({ selectedCategory, onCategorySelect }) => {
   const categories = [
     { 
       id: 'medical', 
@@ -21,23 +26,11 @@ const WelcomeMessage = ({ selectedCategory, onCategorySelect, darkMode }) => {
       label: 'Apoyo en investigación', 
       icon: '🔬',
       description: 'Investigación médica y estudios'
-    },
-    { 
-      id: 'diagnosis', 
-      label: 'Diagnóstico asistido', 
-      icon: '🩺',
-      description: 'IA para diagnóstico médico'
-    },
-    { 
-      id: 'treatment', 
-      label: 'Planes de tratamiento', 
-      icon: '💊',
-      description: 'Recomendaciones terapéuticas'
     }
   ];
 
   return (
-    <div className={`welcome-container ${darkMode ? 'dark' : ''}`}>
+    <div className="welcome-container">
       <div className="welcome-icons">
         <Heart className="w-6 h-6 text-red-500 animate-pulse" />
         <Stethoscope className="w-8 h-8 text-blue-700" />

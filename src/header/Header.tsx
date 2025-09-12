@@ -1,21 +1,18 @@
 import React, { useState } from 'react';
-import { MessageSquare, Twitter, Facebook, Instagram, MessageCircle } from 'lucide-react';
+import { MessageSquare, Twitter, Github, Linkedin, Mail } from 'lucide-react';
 import Avatar from '../common/Avatar';
 import ProfileMenu from '../profile/ProfileMenu';
 import './Header.css';
 
-const Header = ({ darkMode, onToggleDarkMode, user, onUpdateUser }) => {
+const Header: React.FC = () => {
   const [showProfileMenu, setShowProfileMenu] = useState(false);
 
   const toggleProfileMenu = () => {
     setShowProfileMenu(!showProfileMenu);
   };
 
-  const handleUserUpdate = (userData) => {
-    onUpdateUser(userData);
-  };
   return (
-    <header className={`header-container ${darkMode ? 'dark' : ''}`}>
+    <header className="header-container">
       <div className="header-content">
         {/* Logo */}
         <div className="logo-section">
@@ -40,14 +37,14 @@ const Header = ({ darkMode, onToggleDarkMode, user, onUpdateUser }) => {
             <a href="#" className="social-link" title="Twitter">
               <Twitter className="w-5 h-5" />
             </a>
-            <a href="#" className="social-link" title="Facebook">
-              <Facebook className="w-5 h-5" />
+            <a href="#" className="social-link" title="GitHub">
+              <Github className="w-5 h-5" />
             </a>
-            <a href="#" className="social-link" title="Instagram">
-              <Instagram className="w-5 h-5" />
+            <a href="#" className="social-link" title="LinkedIn">
+              <Linkedin className="w-5 h-5" />
             </a>
-            <a href="#" className="social-link" title="Mensajes">
-              <MessageCircle className="w-5 h-5" />
+            <a href="#" className="social-link" title="Email">
+              <Mail className="w-5 h-5" />
             </a>
           </div>
           
@@ -63,21 +60,14 @@ const Header = ({ darkMode, onToggleDarkMode, user, onUpdateUser }) => {
           <div className="relative">
             <Avatar 
               size="md"
-              name={user.name}
-              image={user.avatar}
+              name="Dr. María González"
+              status="online"
               onClick={toggleProfileMenu}
-              darkMode={darkMode}
             />
 
             {/* Profile Dropdown */}
             {showProfileMenu && (
-              <ProfileMenu 
-                onClose={() => setShowProfileMenu(false)} 
-                darkMode={darkMode}
-                onToggleDarkMode={onToggleDarkMode}
-                user={user}
-                onUpdateUser={handleUserUpdate}
-              />
+              <ProfileMenu onClose={() => setShowProfileMenu(false)} />
             )}
           </div>
         </div>

@@ -61,7 +61,6 @@ function App() {
     window.addEventListener('beforeunload', handleBeforeUnload);
     return () => window.removeEventListener('beforeunload', handleBeforeUnload);
   }, [currentMessage]);
-
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
   };
@@ -88,7 +87,7 @@ function App() {
         messages: [{ type: 'user', content: currentMessage, timestamp: new Date() }]
       };
       
-      setChatHistory(prev => [newChat, ...prev]);
+      setChatHistory(prev => [newChat, ...prev.slice(0, 4)]);
       setCurrentMessage('');
     }
   };
@@ -102,7 +101,6 @@ function App() {
 
   const handleMessageSubmit = (message) => {
     setCurrentMessage(message);
-    // Aquí se procesaría el mensaje con la IA
     console.log('Procesando consulta médica:', message);
   };
 

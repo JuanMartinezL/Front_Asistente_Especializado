@@ -26,7 +26,6 @@
 
 ::-webkit-scrollbar-track {
   background: #f1f1f1;
-  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -36,6 +35,19 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background: #1d4ed8;
+}
+
+/* Dark mode scrollbar */
+.dark ::-webkit-scrollbar-track {
+  background: #374151;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #6b7280;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
 }
 
 /* Smooth scrolling */
@@ -53,7 +65,130 @@ button:focus {
   outline-offset: 2px;
 }
 
+/* Dark mode focus */
+.dark button:focus {
+  outline-color: #60a5fa;
+}
+
 /* Tema de investigación médica */
 body {
   background-color: white;
+  transition: background-color 0.3s ease;
+}
+
+body.dark {
+  background-color: #111827;
+}
+
+/* Dark mode styles for components */
+.dark {
+  background-color: #111827 !important;
+  color: #e5e7eb;
+}
+
+.dark .header-container {
+  background-color: #1f2937 !important;
+  border-bottom-color: #374151;
+}
+
+.dark .chat-input-container {
+  background-color: #1f2937 !important;
+  border-top-color: #374151;
+}
+
+.dark .chat-input-wrapper {
+  background-color: #374151;
+  border-color: #4b5563;
+}
+
+.dark .chat-input-wrapper.border-blue-300 {
+  border-color: #60a5fa;
+}
+
+.dark .chat-textarea {
+  background-color: transparent;
+  color: #e5e7eb;
+}
+
+.dark .chat-textarea::placeholder {
+  color: #9ca3af;
+}
+
+.dark .chat-button {
+  color: #9ca3af;
+}
+
+.dark .chat-button:hover {
+  color: #60a5fa;
+  background-color: #4b5563;
+}
+
+.dark .header-container {
+  background-color: #1f2937;
+  border-bottom-color: #374151;
+}
+
+.dark .profile-menu {
+  background-color: #374151;
+  border-color: #4b5563;
+}
+
+.dark .profile-name {
+  color: #e5e7eb;
+}
+
+.dark .profile-role {
+  color: #9ca3af;
+}
+
+.dark .profile-email {
+  color: #6b7280;
+}
+
+.dark .profile-action-button {
+  color: #e5e7eb;
+}
+
+.dark .profile-action-button:hover {
+  background-color: #4b5563;
+}
+
+.dark .profile-action-button.logout {
+  color: #f87171;
+}
+
+.dark .profile-action-button.logout:hover {
+  background-color: #7f1d1d;
+}
+
+/* Main content dark mode */
+.dark main {
+  background-color: #111827 !important;
+}
+
+.dark .welcome-container {
+  color: #e5e7eb;
+}
+
+.dark .welcome-title {
+  color: #e5e7eb;
+}
+
+.dark .welcome-description {
+  color: #9ca3af;
+}
+
+.dark .category-instruction {
+  color: #9ca3af;
+}
+
+.dark .category-button-inactive {
+  background-color: #374151;
+  color: #e5e7eb;
+  border-color: #4b5563;
+}
+
+.dark .category-button-inactive:hover {
+  background-color: #4b5563;
+  border-color: #6b7280;
 }

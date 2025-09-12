@@ -1,24 +1,24 @@
 import React, { useState, useRef } from 'react';
-import { Send, Paperclip, Mic } from 'lucide-react';
+import { Send, Paperclip, FileText, Mic } from 'lucide-react';
 import './ChatInput.css';
 
-const ChatInput = ({ darkMode, onMessageSubmit }) => {
+const ChatInput: React.FC = () => {
   const [message, setMessage] = useState('');
   const [isRecording, setIsRecording] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
-  const textareaRef = useRef(null);
-  const fileInputRef = useRef(null);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (message.trim()) {
-      onMessageSubmit(message);
+      console.log('Enviando consulta médica:', message);
       setMessage('');
       adjustTextareaHeight();
     }
   };
 
-  const handleKeyDown = (e) => {
+  const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
       handleSubmit(e);
@@ -32,7 +32,7 @@ const ChatInput = ({ darkMode, onMessageSubmit }) => {
     }
   };
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setMessage(e.target.value);
     adjustTextareaHeight();
   };
@@ -41,7 +41,7 @@ const ChatInput = ({ darkMode, onMessageSubmit }) => {
     fileInputRef.current?.click();
   };
 
-  const handleFileSelect = (e) => {
+  const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
     if (files) {
       console.log('Archivos médicos seleccionados:', Array.from(files));
@@ -52,17 +52,17 @@ const ChatInput = ({ darkMode, onMessageSubmit }) => {
     setIsRecording(!isRecording);
   };
 
-  const handleDragOver = (e) => {
+  const handleDragOver = (e: React.DragEvent) => {
     e.preventDefault();
     setIsDragging(true);
   };
 
-  const handleDragLeave = (e) => {
+  const handleDragLeave = (e: React.DragEvent) => {
     e.preventDefault();
     setIsDragging(false);
   };
 
-  const handleDrop = (e) => {
+  const handleDrop = (e: React.DragEvent) => {
     e.preventDefault();
     setIsDragging(false);
     const files = e.dataTransfer.files;
@@ -72,7 +72,7 @@ const ChatInput = ({ darkMode, onMessageSubmit }) => {
   };
 
   return (
-    <div className={`chat-input-container ${darkMode ? 'dark' : ''}`}>
+    <div className="chat-input-container">
       <div className="max-w-4xl mx-auto">
         <form onSubmit={handleSubmit} className="relative">
           <div 
@@ -82,11 +82,21 @@ const ChatInput = ({ darkMode, onMessageSubmit }) => {
                 : message.trim() 
                   ? 'border-blue-300' 
                   : 'border-gray-200'
-            } ${darkMode ? 'dark' : ''}`}
+            }`}
             onDragOver={handleDragOver}
             onDragLeave={handleDragLeave}
             onDrop={handleDrop}
           >
+            {/* Drag overlay */}
+            {isDragging && (
+              <div className="drag-overlay">
+                <div className="text-center">
+                  <FileText className="w-8 h-8 text-blue-600 mx-auto mb-2" />
+                  <p className="text-blue-700 font-medium">Suelta los archivos médicos aquí</p>
+                </div>
+              </div>
+            )}
+
             <div className="flex items-end gap-3 p-4">
               {/* File upload button */}
               <button
