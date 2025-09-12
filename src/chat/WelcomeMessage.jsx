@@ -49,8 +49,7 @@ const WelcomeMessage = ({ selectedCategory, onCategorySelect, darkMode }) => {
       </h1>
       
       <p className="welcome-description">
-        Asistente especializado en investigación médica y salud. 
-        Aquí para ayudarte con consultas clínicas, análisis de datos y apoyo en investigación.
+        Asistente especializado en investigación médica y salud.
       </p>
       
       <div className="category-selection">
