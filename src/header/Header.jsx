@@ -27,9 +27,9 @@ const Header = ({ darkMode, onToggleDarkMode, user, onUpdateUser }) => {
           </div>
           <div>
             <h1 className="logo-title">
-              Asistente de Salud
+              CUIDO
             </h1>
-            <p className="logo-subtitle">Investigación Médica IA</p>
+            <p className="logo-subtitle">Asistente Medico IA</p>
           </div>
         </div>
 
