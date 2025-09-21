@@ -14,7 +14,7 @@ const UserProfileContainer = () => {
       try {
         const response = await fetch('https://tu-api.com/usuario/1');
 
-        // CAMBIO 1: Fetch no considera errores HTTP (404, 500) como un fallo.
+        // CAMBIO 1: Fetch no considera errores HTTP (404, 500) como qun fallo.
         // Debemos verificar la respuesta manualmente.
         if (!response.ok) {
           throw new Error('La respuesta de la red no fue exitosa.');

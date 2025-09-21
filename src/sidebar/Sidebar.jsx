@@ -4,18 +4,23 @@ import {
   X, 
   MessageSquare, 
   Search,
-  History, 
   Settings, 
   HelpCircle,
-  Shield,
   CreditCard,
-  User,
-  LogOut,
   Plus
 } from 'lucide-react';
 import './Sidebar.css';
 
-const Sidebar = ({ isOpen, onToggle, chatHistory, darkMode, onNewChat }) => {
+// 1. Recibe las nuevas props del padre: `userProfile` y `onSelectChat`.
+const Sidebar = ({ 
+  isOpen, 
+  onToggle, 
+  userProfile, 
+  chatHistory, 
+  onSelectChat, 
+  onNewChat,
+  darkMode 
+}) => {
   const [searchTerm, setSearchTerm] = useState('');
 
   const menuItems = [
@@ -34,25 +39,26 @@ const Sidebar = ({ isOpen, onToggle, chatHistory, darkMode, onNewChat }) => {
 
   return (
     <>
-      {/* Toggle Button */}
+      {/* Botón para abrir/cerrar el sidebar */}
       <button onClick={onToggle} className={`sidebar-toggle ${darkMode ? 'dark' : ''}`}>
         {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
       </button>
 
-      {/* Overlay */}
+      {/* Overlay que aparece cuando el sidebar está abierto */}
       {isOpen && <div className="sidebar-overlay" onClick={onToggle} />}
 
-      {/* Sidebar */}
+      {/* Contenido del Sidebar */}
       <div className={`sidebar ${isOpen ? 'sidebar-open' : 'sidebar-closed'} modern-sidebar`}>
         <div className="sidebar-content">
-          {/* Header with logo */}
+          
+          {/* ... (Header y logo no cambian) ... */}
           <div className="sidebar-header-modern">
             <div className="sidebar-logo-modern">
               <span className="logo-text">bolt</span>
             </div>
           </div>
 
-          {/* New Chat Button */}
+          {/* Botón de Nuevo Chat */}
           <div className="new-chat-section">
             <button onClick={onNewChat} className="new-chat-button">
               <Plus className="w-4 h-4" />
@@ -60,7 +66,7 @@ const Sidebar = ({ isOpen, onToggle, chatHistory, darkMode, onNewChat }) => {
             </button>
           </div>
 
-          {/* Search */}
+          {/* ... (Sección de búsqueda no cambia) ... */}
           <div className="search-section">
             <div className="search-input-wrapper">
               <Search className="w-4 h-4 search-icon" />
@@ -74,31 +80,23 @@ const Sidebar = ({ isOpen, onToggle, chatHistory, darkMode, onNewChat }) => {
             </div>
           </div>
 
-          {/* Chat History */}
+          {/* Historial de Chats */}
           <div className="chat-history-modern">
             <h3 className="chat-history-title-modern">Tus chats</h3>
-            
-            {/* Today Section */}
-            <div className="chat-group">
-              <div className="chat-group-title">Hoy</div>
-              {filteredChats.slice(0, 1).map((chat) => (
-                <button key={chat.id} className="chat-history-item-modern">
-                  <MessageSquare className="w-4 h-4 chat-icon" />
-                  <span className="chat-title-text">{chat.title}</span>
-                </button>
-              ))}
-            </div>
-
-            {/* Previous chats */}
-            {filteredChats.slice(1).map((chat) => (
-              <button key={chat.id} className="chat-history-item-modern">
+            {filteredChats.map((chat) => (
+              // 2. Se añade el evento `onClick` para notificar al padre qué chat se seleccionó.
+              <button 
+                key={chat.id} 
+                className="chat-history-item-modern"
+                onClick={() => onSelectChat(chat.id)}
+              >
                 <MessageSquare className="w-4 h-4 chat-icon" />
                 <span className="chat-title-text">{chat.title}</span>
               </button>
             ))}
           </div>
 
-          {/* Menu Items */}
+          {/* ... (Items del menú no cambian) ... */}
           <div className="sidebar-menu-modern">
             {menuItems.map((item, index) => (
               <button
@@ -112,17 +110,27 @@ const Sidebar = ({ isOpen, onToggle, chatHistory, darkMode, onNewChat }) => {
             ))}
           </div>
 
-          {/* User Profile */}
+          {/* Perfil de Usuario */}
           <div className="user-profile-section">
             <div className="user-profile-info">
               <div className="user-avatar">
                 <div className="avatar-circle">
-                  <span className="avatar-initial">C</span>
+                  {/* Muestra la inicial del correo si está disponible */}
+                  <span className="avatar-initial">
+                    {userProfile ? userProfile.email.charAt(0).toUpperCase() : '?'}
+                  </span>
                 </div>
               </div>
               <div className="user-details">
-                <div className="user-email">correobasura701@gmail.com</div>
-                <div className="user-plan">Plan personal</div>
+                {/* 3. Muestra los datos del perfil recibidos por props. */}
+                {userProfile ? (
+                  <>
+                    <div className="user-email">{userProfile.email}</div>
+                    <div className="user-plan">{userProfile.plan || 'Plan no definido'}</div>
+                  </>
+                ) : (
+                  <div className="user-email">Cargando...</div>
+                )}
               </div>
             </div>
           </div>
